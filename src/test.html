@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue Slider Example</title>
+  <link rel="stylesheet" href="/src/style/output.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+  <div id="testi">
+    <section class="py-20 2xl:px-20">
+        <div class="container">
+            <div class="flex flex-wrap">
+                <div class="w-full px-5">
+                    <transition name="slide" mode="out-in">
+                      <div class="border-2 py-16 px-4 border-primary2 rounded-lg relative" :key="currentIndex">
+                          <div class="haed">
+                              <img :src="currentSlide.img" class="absolute -top-10 translate-x-1/2 right-1/2" alt="Healen Smith">
+                              <img src="/src/img/land3.svg" class="absolute -top-5 translate-x-1/2 right-1/4" alt="">
+                          </div>
+                          <div class="text-center text-secondary2 space-y-4">
+                              <h2 class="text-lg font-normal">{{currentSlide.nama}}</h2>
+                              <p class="font-sans text-slate-500">{{ currentSlide.komentar }}</p>
+                          </div>
+                      </div>
+                    </transition>
+                </div>
+            </div>
+        </div>
+    </section>
+  </div>
+
+  <!-- <section class="py-8 lg:py-12 2xl:px-20">
+    <div class="container">
+        <div class="flex justify-between items-center">
+            <h1 class="text-2xl lg:text-3xl text-secondary2 font-semibold">Popular Now</h1>
+            <a href="">
+                <h1 class="text-xl font-normal text-slate-600">View All</h1>
+            </a>
+        </div>
+        <div class="flex justify-start mt-6 lg:my-16 gap-y-3 w-full custom-scrollbar scrollbar-hide overflow-x-auto bg-transparent py-4">
+            <div class="flex-none w-[170px] md:w-[230px] lg:w-[275px]">
+                <div class="px-1 md:px-3">
+                    <a href="" class="hover:opacity-85 transition duration-200 ease-in-out group" title="Atomic habit">
+                        <div class="shadow-lg rounded-xl overflow-hidden group-hover:bg-gray-200 transition duration-300 ease-in-out">
+                          <div class="h-[13rem] md:h-[19rem] lg:h-[20rem] m-2 lg:m-4 overflow-hidden relative rounded-xl">
+                              <img src="/src/img/book/book3.svg" class="mx-auto absolute inset-0 w-full h-full object-cover group-hover:blur-[3px] group-hover:scale-110 transition duration-300" alt="book1">
+                              <div class="bg-dark w-full h-full absolute opacity-50 -translate-x-[300px] group-hover:translate-x-0 inset-0 transition duration-300"></div>
+                              <div class="absolute inset-0 translate-y-[300px] group-hover:-translate-y-0 transition duration-500">
+                                <div class="realative">
+                                  <div class="text-white absolute left-2 bottom-2 md:left-3 md:bottom-3 lg:left-3 lg:bottom-4 space-y-1">
+                                    <h1 class="text-base md:text-xl max-w-lg">Atomic habit</h1>
+                                    <div class="m-0 text-xs">
+                                      <ul class="flex space-x-1">
+                                          <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                          <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                          <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                          <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                          <li class="text-secondary grayscale"><i class="fa-solid fa-star fill-current"></i> </li>
+                                      </ul>
+                                    </div>
+                                    <h3 class="text-xs lg:text-sm">James clear</h3>
+                                  </div>
+                                </div>
+                              </div>
+                          </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="flex-none w-[170px] md:w-[230px] lg:w-[275px]">
+                <div class="px-1 md:px-3">
+                    <a href="" class="hover:opacity-85 transition duration-200 ease-in-out group" title="How to master your habit">
+                        <div class="shadow-lg rounded-xl overflow-hidden group-hover:bg-gray-200 transition duration-300 ease-in-out">
+                          <div class="h-[13rem] md:h-[19rem] lg:h-[20rem] m-2 lg:m-4 overflow-hidden relative rounded-xl">
+                              <img src="/src/img/book/book2.svg" class="mx-auto absolute inset-0 w-full h-full object-cover group-hover:blur-[3px] group-hover:scale-110 transition duration-300" alt="book1">
+                              <div class="bg-dark w-full h-full absolute opacity-50 -translate-x-[300px] group-hover:translate-x-0 inset-0 transition duration-300"></div>
+                              <div class="absolute inset-0 translate-y-[300px] group-hover:-translate-y-0 transition duration-500">
+                                <div class="realative">
+                                  <div class="text-white absolute left-2 bottom-2 md:left-3 md:bottom-3 lg:left-3 lg:bottom-4 space-y-1">
+                                    <h1 class="text-base md:text-xl max-w-lg">How to master your habit</h1>
+                                    <div class="m-0 text-xs">
+                                      <ul class="flex space-x-1">
+                                          <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                          <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                          <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                          <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                          <li class="text-secondary grayscale"><i class="fa-solid fa-star fill-current"></i> </li>
+                                      </ul>
+                                    </div>
+                                    <h3 class="text-xs lg:text-sm">Felix y siaw</h3>
+                                  </div>
+                                </div>
+                              </div>
+                          </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="flex-none w-[170px] md:w-[230px] lg:w-[275px]">
+                <div class="px-1 md:px-3">
+                    <a href="" class="hover:opacity-85 transition duration-200 ease-in-out group" title="Build a story brand">
+                        <div class="shadow-lg rounded-xl overflow-hidden group-hover:bg-gray-200 transition duration-300 ease-in-out">
+                          <div class="h-[13rem] md:h-[19rem] lg:h-[20rem] m-2 lg:m-4 overflow-hidden relative rounded-xl">
+                              <img src="/src/img/book/book5.svg" class="mx-auto absolute inset-0 w-full h-full object-cover group-hover:blur-[3px] group-hover:scale-110 transition duration-300" alt="book1">
+                              <div class="bg-dark w-full h-full absolute opacity-50 -translate-x-[300px] group-hover:translate-x-0 inset-0 transition duration-300"></div>
+                              <div class="absolute inset-0 translate-y-[300px] group-hover:-translate-y-0 transition duration-500">
+                                <div class="realative">
+                                  <div class="text-white absolute left-2 bottom-2 md:left-3 md:bottom-3 lg:left-3 lg:bottom-4 space-y-1">
+                                    <h1 class="text-base md:text-xl max-w-lg">Build a story brand</h1>
+                                    <div class="m-0 text-xs">
+                                      <ul class="flex space-x-1">
+                                          <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                          <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                          <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                          <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                          <li class="text-secondary grayscale"><i class="fa-solid fa-star fill-current"></i> </li>
+                                      </ul>
+                                    </div>
+                                    <h3 class="text-xs lg:text-sm">Donald miller</h3>
+                                  </div>
+                                </div>
+                              </div>
+                          </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="flex-none w-[170px] md:w-[230px] lg:w-[275px]">
+                <div class="px-1 md:px-3">
+                    <a href="" class="hover:opacity-85 transition duration-200 ease-in-out group" title="Start with why">
+                        <div class="shadow-lg rounded-xl overflow-hidden group-hover:bg-gray-200 transition duration-300 ease-in-out">
+                          <div class="h-[13rem] md:h-[19rem] lg:h-[20rem] m-2 lg:m-4 overflow-hidden relative rounded-xl">
+                              <img src="/src/img/book/book7.svg" class="mx-auto absolute inset-0 w-full h-full object-cover group-hover:blur-[3px] group-hover:scale-110 transition duration-300" alt="book1">
+                              <div class="bg-dark w-full h-full absolute opacity-50 -translate-x-[300px] group-hover:translate-x-0 inset-0 transition duration-300"></div>
+                              <div class="absolute inset-0 translate-y-[300px] group-hover:-translate-y-0 transition duration-500">
+                                <div class="realative">
+                                  <div class="text-white absolute left-2 bottom-2 md:left-3 md:bottom-3 lg:left-3 lg:bottom-4 space-y-1">
+                                    <h1 class="text-base md:text-xl max-w-lg">Start with why</h1>
+                                    <div class="m-0 text-xs">
+                                      <ul class="flex space-x-1">
+                                          <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                          <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                          <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                          <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                          <li class="text-secondary grayscale"><i class="fa-solid fa-star fill-current"></i> </li>
+                                      </ul>
+                                    </div>
+                                    <h3 class="text-xs lg:text-sm">Simon sinek</h3>
+                                  </div>
+                                </div>
+                              </div>
+                          </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="flex-none w-[170px] md:w-[230px] lg:w-[275px]">
+                <div class="px-1 md:px-3">
+                    <a href="" class="hover:opacity-85 transition duration-200 ease-in-out group" title="Bintang">
+                        <div class="shadow-lg rounded-xl overflow-hidden group-hover:bg-gray-200 transition duration-300 ease-in-out">
+                          <div class="h-[13rem] md:h-[19rem] lg:h-[20rem] m-2 lg:m-4 overflow-hidden relative rounded-xl">
+                              <img src="/src/img/book/book8.svg" class="mx-auto absolute inset-0 w-full h-full object-cover group-hover:blur-[3px] group-hover:scale-110 transition duration-300" alt="book1">
+                              <div class="bg-dark w-full h-full absolute opacity-50 -translate-x-[300px] group-hover:translate-x-0 inset-0 transition duration-300"></div>
+                              <div class="absolute inset-0 translate-y-[300px] group-hover:-translate-y-0 transition duration-500">
+                                <div class="realative">
+                                  <div class="text-white absolute left-2 bottom-2 md:left-3 md:bottom-3 lg:left-3 lg:bottom-4 space-y-1">
+                                    <h1 class="text-base md:text-xl max-w-lg">Bintang</h1>
+                                    <div class="m-0 text-xs">
+                                      <ul class="flex space-x-1">
+                                          <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                          <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                          <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                          <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                          <li class="text-secondary grayscale"><i class="fa-solid fa-star fill-current"></i> </li>
+                                      </ul>
+                                    </div>
+                                    <h3 class="text-xs lg:text-sm">Tere liye</h3>
+                                  </div>
+                                </div>
+                              </div>
+                          </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="flex-none w-[170px] md:w-[230px] lg:w-[275px]">
+                <div class="px-1 md:px-3">
+                    <a href="" class="hover:opacity-85 transition duration-200 ease-in-out group" title="Selena">
+                        <div class="shadow-lg rounded-xl overflow-hidden group-hover:bg-gray-200 transition duration-300 ease-in-out">
+                          <div class="h-[13rem] md:h-[19rem] lg:h-[20rem] m-2 lg:m-4 overflow-hidden relative rounded-xl">
+                              <img src="/src/img/book/book1.svg" class="mx-auto absolute inset-0 w-full h-full object-cover group-hover:blur-[3px] group-hover:scale-110 transition duration-300" alt="book1">
+                              <div class="bg-dark w-full h-full absolute opacity-50 -translate-x-[300px] group-hover:translate-x-0 inset-0 transition duration-300"></div>
+                              <div class="absolute inset-0 translate-y-[300px] group-hover:-translate-y-0 transition duration-500">
+                                <div class="realative">
+                                  <div class="text-white absolute left-2 bottom-2 md:left-3 md:bottom-3 lg:left-3 lg:bottom-4 space-y-1">
+                                    <h1 class="text-base md:text-xl max-w-lg">Selena</h1>
+                                    <div class="m-0 text-xs">
+                                      <ul class="flex space-x-1">
+                                          <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                          <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                          <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                          <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                          <li class="text-secondary grayscale"><i class="fa-solid fa-star fill-current"></i> </li>
+                                      </ul>
+                                    </div>
+                                    <h3 class="text-xs lg:text-sm">Tere liye</h3>
+                                  </div>
+                                </div>
+                              </div>
+                          </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="flex-none">
+                <div class="flex w-full h-full px-10">
+                    <div class="my-auto">
+                        <a href="" class="group" title="Lebih banyak">
+                            <div class="w-[50px] h-[50px] border-2 rounded-full bg-white group-hover:bg-slate-400 overflow-hidden transiiton duration-200">
+                                <div class="flex h-full w-full">
+                                    <div class="mx-auto my-auto">
+                                        <i class="fa-solid fa-arrow-right"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> -->
+
+
+<!-- <section class="py-8 lg:py-6 2xl:px-24">
+  <div class="container">
+      <div class="flex justify-between items-center">
+          <h1 class="text-2xl lg:text-3xl text-secondary2 font-semibold">Popular Now</h1>
+          <a href="">
+              <h1 class="text-xl font-normal text-slate-600">View All</h1>
+          </a>
+      </div>
+      <div class="flex justify-start mt-6 lg:my-16 gap-y-3 w-full custom-scrollbar overflow-x-auto bg-transparent py-4">
+          <div class="flex-none w-[170px] md:w-[230px] lg:w-[268px]">
+              <div class="px-1 md:px-3">
+                  <a href="" class="hover:opacity-85 transition duration-200 ease-in-out group" title="Atomic habit">
+                      <div class="shadow-lg rounded-xl overflow-hidden group-hover:bg-gray-200 transition duration-300 ease-in-out">
+                        <div class="h-[13rem] md:h-[19rem] lg:h-[20rem] m-2 lg:m-4 overflow-hidden relative rounded-xl">
+                            <img src="/src/img/book/book3.svg" class="mx-auto absolute inset-0 w-full h-full object-cover group-hover:blur-[3px] group-hover:scale-110 transition duration-300" alt="book1">
+                            <div class="bg-dark w-full h-full absolute opacity-50 -translate-x-[300px] group-hover:translate-x-0 inset-0 transition duration-300"></div>
+                            <div class="absolute inset-0 translate-y-[300px] group-hover:-translate-y-0 transition duration-500">
+                              <div class="realative">
+                                <div class="text-white absolute left-2 bottom-2 md:left-3 md:bottom-3 lg:left-3 lg:bottom-4 space-y-1">
+                                  <h1 class="text-base md:text-xl max-w-[12rem]">Atomic habit</h1>
+                                  <div class="m-0 text-xs">
+                                    <ul class="flex space-x-1">
+                                        <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                        <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                        <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                        <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                        <li class="text-secondary grayscale"><i class="fa-solid fa-star fill-current"></i> </li>
+                                    </ul>
+                                  </div>
+                                  <h3 class="text-xs font-sans lg:text-sm">James clear</h3>
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+                      </div>
+                  </a>
+              </div>
+          </div>
+          <div class="flex-none w-[170px] md:w-[230px] lg:w-[268px]">
+              <div class="px-1 md:px-3">
+                  <a href="" class="hover:opacity-85 transition duration-200 ease-in-out group" title="How to master your habit">
+                      <div class="shadow-lg rounded-xl overflow-hidden group-hover:bg-gray-200 transition duration-300 ease-in-out">
+                        <div class="h-[13rem] md:h-[19rem] lg:h-[20rem] m-2 lg:m-4 overflow-hidden relative rounded-xl">
+                            <img src="/src/img/book/book2.svg" class="mx-auto absolute inset-0 w-full h-full object-cover group-hover:blur-[3px] group-hover:scale-110 transition duration-300" alt="book1">
+                            <div class="bg-dark w-full h-full absolute opacity-50 -translate-x-[300px] group-hover:translate-x-0 inset-0 transition duration-300"></div>
+                            <div class="absolute inset-0 translate-y-[300px] group-hover:-translate-y-0 transition duration-500">
+                              <div class="realative">
+                                <div class="text-white absolute left-2 bottom-2 md:left-3 md:bottom-3 lg:left-3 lg:bottom-4 space-y-1">
+                                  <h1 class="text-base md:text-xl max-w-[12rem]">How to master your habit</h1>
+                                  <div class="m-0 text-xs">
+                                    <ul class="flex space-x-1">
+                                        <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                        <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                        <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                        <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                        <li class="text-secondary grayscale"><i class="fa-solid fa-star fill-current"></i> </li>
+                                    </ul>
+                                  </div>
+                                  <h3 class="text-xs font-sans lg:text-sm">Felix y siaw</h3>
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+                      </div>
+                  </a>
+              </div>
+          </div>
+          <div class="flex-none w-[170px] md:w-[230px] lg:w-[268px]">
+              <div class="px-1 md:px-3">
+                  <a href="" class="hover:opacity-85 transition duration-200 ease-in-out group" title="Build a story brand">
+                      <div class="shadow-lg rounded-xl overflow-hidden group-hover:bg-gray-200 transition duration-300 ease-in-out">
+                        <div class="h-[13rem] md:h-[19rem] lg:h-[20rem] m-2 lg:m-4 overflow-hidden relative rounded-xl">
+                            <img src="/src/img/book/book5.svg" class="mx-auto absolute inset-0 w-full h-full object-cover group-hover:blur-[3px] group-hover:scale-110 transition duration-300" alt="book1">
+                            <div class="bg-dark w-full h-full absolute opacity-50 -translate-x-[300px] group-hover:translate-x-0 inset-0 transition duration-300"></div>
+                            <div class="absolute inset-0 translate-y-[300px] group-hover:-translate-y-0 transition duration-500">
+                              <div class="realative">
+                                <div class="text-white absolute left-2 bottom-2 md:left-3 md:bottom-3 lg:left-3 lg:bottom-4 space-y-1">
+                                  <h1 class="text-base md:text-xl max-w-[12rem]">Build a story brand</h1>
+                                  <div class="m-0 text-xs">
+                                    <ul class="flex space-x-1">
+                                        <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                        <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                        <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                        <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                        <li class="text-secondary grayscale"><i class="fa-solid fa-star fill-current"></i> </li>
+                                    </ul>
+                                  </div>
+                                  <h3 class="text-xs font-sans lg:text-sm">Donald miller</h3>
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+                      </div>
+                  </a>
+              </div>
+          </div>
+          <div class="flex-none w-[170px] md:w-[230px] lg:w-[268px]">
+              <div class="px-1 md:px-3">
+                  <a href="" class="hover:opacity-85 transition duration-200 ease-in-out group" title="Start with why">
+                      <div class="shadow-lg rounded-xl overflow-hidden group-hover:bg-gray-200 transition duration-300 ease-in-out">
+                        <div class="h-[13rem] md:h-[19rem] lg:h-[20rem] m-2 lg:m-4 overflow-hidden relative rounded-xl">
+                            <img src="/src/img/book/book7.svg" class="mx-auto absolute inset-0 w-full h-full object-cover group-hover:blur-[3px] group-hover:scale-110 transition duration-300" alt="book1">
+                            <div class="bg-dark w-full h-full absolute opacity-50 -translate-x-[300px] group-hover:translate-x-0 inset-0 transition duration-300"></div>
+                            <div class="absolute inset-0 translate-y-[300px] group-hover:-translate-y-0 transition duration-500">
+                              <div class="realative">
+                                <div class="text-white absolute left-2 bottom-2 md:left-3 md:bottom-3 lg:left-3 lg:bottom-4 space-y-1">
+                                  <h1 class="text-base md:text-xl max-w-[12rem]">Start with why</h1>
+                                  <div class="m-0 text-xs">
+                                    <ul class="flex space-x-1">
+                                        <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                        <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                        <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                        <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                        <li class="text-secondary grayscale"><i class="fa-solid fa-star fill-current"></i> </li>
+                                    </ul>
+                                  </div>
+                                  <h3 class="text-xs font-sans lg:text-sm">Simon sinek</h3>
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+                      </div>
+                  </a>
+              </div>
+          </div>
+          <div class="flex-none w-[170px] md:w-[230px] lg:w-[268px]">
+              <div class="px-1 md:px-3">
+                  <a href="" class="hover:opacity-85 transition duration-200 ease-in-out group" title="Bintang">
+                      <div class="shadow-lg rounded-xl overflow-hidden group-hover:bg-gray-200 transition duration-300 ease-in-out">
+                        <div class="h-[13rem] md:h-[19rem] lg:h-[20rem] m-2 lg:m-4 overflow-hidden relative rounded-xl">
+                            <img src="/src/img/book/book8.svg" class="mx-auto absolute inset-0 w-full h-full object-cover group-hover:blur-[3px] group-hover:scale-110 transition duration-300" alt="book1">
+                            <div class="bg-dark w-full h-full absolute opacity-50 -translate-x-[300px] group-hover:translate-x-0 inset-0 transition duration-300"></div>
+                            <div class="absolute inset-0 translate-y-[300px] group-hover:-translate-y-0 transition duration-500">
+                              <div class="realative">
+                                <div class="text-white absolute left-2 bottom-2 md:left-3 md:bottom-3 lg:left-3 lg:bottom-4 space-y-1">
+                                  <h1 class="text-base md:text-xl max-w-[12rem]">Bintang</h1>
+                                  <div class="m-0 text-xs">
+                                    <ul class="flex space-x-1">
+                                        <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                        <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                        <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                        <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                        <li class="text-secondary grayscale"><i class="fa-solid fa-star fill-current"></i> </li>
+                                    </ul>
+                                  </div>
+                                  <h3 class="text-xs font-sans lg:text-sm">Tere liye</h3>
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+                      </div>
+                  </a>
+              </div>
+          </div>
+          <div class="flex-none w-[170px] md:w-[230px] lg:w-[268px]">
+              <div class="px-1 md:px-3">
+                  <a href="" class="hover:opacity-85 transition duration-200 ease-in-out group" title="Selena">
+                      <div class="shadow-lg rounded-xl overflow-hidden group-hover:bg-gray-200 transition duration-300 ease-in-out">
+                        <div class="h-[13rem] md:h-[19rem] lg:h-[20rem] m-2 lg:m-4 overflow-hidden relative rounded-xl">
+                            <img src="/src/img/book/book1.svg" class="mx-auto absolute inset-0 w-full h-full object-cover group-hover:blur-[3px] group-hover:scale-110 transition duration-300" alt="book1">
+                            <div class="bg-dark w-full h-full absolute opacity-50 -translate-x-[300px] group-hover:translate-x-0 inset-0 transition duration-300"></div>
+                            <div class="absolute inset-0 translate-y-[300px] group-hover:-translate-y-0 transition duration-500">
+                              <div class="realative">
+                                <div class="text-white absolute left-2 bottom-2 md:left-3 md:bottom-3 lg:left-3 lg:bottom-4 space-y-1">
+                                  <h1 class="text-base md:text-xl max-w-[12rem]">Selena</h1>
+                                  <div class="m-0 text-xs">
+                                    <ul class="flex space-x-1">
+                                        <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                        <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                        <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                        <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                        <li class="text-secondary grayscale"><i class="fa-solid fa-star fill-current"></i> </li>
+                                    </ul>
+                                  </div>
+                                  <h3 class="text-xs font-sans lg:text-sm">Tere liye</h3>
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+                      </div>
+                  </a>
+              </div>
+          </div>
+          <div class="flex-none">
+              <div class="flex w-full h-full px-10">
+                  <div class="my-auto">
+                      <a href="" class="group" title="Lebih banyak">
+                          <div class="w-[50px] h-[50px] border-2 rounded-full bg-white group-hover:bg-slate-400 overflow-hidden transiiton duration-200">
+                              <div class="flex h-full w-full">
+                                  <div class="mx-auto my-auto">
+                                      <i class="fa-solid fa-arrow-right"></i>
+                                  </div>
+                              </div>
+                          </div>
+                      </a>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</section> -->
+
+
+<section class="py-8 lg:py-6 2xl:px-24">
+  <div class="container">
+      <div class="flex justify-between items-center">
+          <h1 class="text-2xl lg:text-3xl text-secondary2 font-semibold">Popular Now</h1>
+          <a href="">
+              <h1 class="text-xl font-normal text-slate-600">View All</h1>
+          </a>
+      </div>
+      <div class="wrapper px-2 relative">
+          <button id="prev-btn" class="group absolute z-50 -translate-y-1/2 top-1/2 -left-3">
+              <div class="w-[45px] h-[45px] shadow border-2 rounded-full bg-white group-hover:bg-slate-400 overflow-hidden transiiton duration-200">
+                  <div class="flex h-full w-full">
+                      <div class="mx-auto my-auto">
+                          <i class="fa-solid fa-angle-right rotate-180"></i>
+                      </div>
+                  </div>
+              </div>
+          </button>
+          <button id="next-btn" class="group absolute z-50 -translate-y-1/2 top-1/2 -right-3">
+              <div class="w-[45px] h-[45px] shadow border-2 rounded-full bg-white group-hover:bg-slate-400 overflow-hidden transiiton duration-200">
+                  <div class="flex h-full w-full">
+                      <div class="mx-auto my-auto">
+                          <i class="fa-solid fa-angle-right"></i>
+                      </div>
+                  </div>
+              </div>
+          </button>
+          <div class="wrapping flex justify-start mt-6 lg:my-16 gap-y-3 w-full custom-scrollbar overflow-x-auto bg-transparent py-4">
+              <div class="card flex-none w-[170px] md:w-[230px] lg:w-[268px]">
+                  <div class="px-1 md:px-3">
+                      <a href="" class="hover:opacity-85 transition duration-200 ease-in-out group" title="Atomic habit">
+                          <div class="shadow-lg rounded-xl overflow-hidden group-hover:bg-gray-200 transition duration-300 ease-in-out">
+                            <div class="h-[13rem] md:h-[19rem] lg:h-[20rem] m-2 lg:m-4 overflow-hidden relative rounded-xl">
+                                <img src="/src/img/book/book3.svg" class="mx-auto absolute inset-0 w-full h-full object-cover group-hover:blur-[3px] group-hover:scale-110 transition duration-300" alt="book1">
+                                <div class="bg-dark w-full h-full absolute opacity-50 -translate-x-[300px] group-hover:translate-x-0 inset-0 transition duration-300"></div>
+                                <div class="absolute inset-0 translate-y-[300px] group-hover:-translate-y-0 transition duration-500">
+                                  <div class="realative">
+                                    <div class="text-white absolute left-2 bottom-2 md:left-3 md:bottom-3 lg:left-3 lg:bottom-4 space-y-1">
+                                      <h1 class="text-base md:text-xl max-w-[12rem]">Atomic habit</h1>
+                                      <div class="m-0 text-xs">
+                                        <ul class="flex space-x-1">
+                                            <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                            <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                            <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                            <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                            <li class="text-secondary grayscale"><i class="fa-solid fa-star fill-current"></i> </li>
+                                        </ul>
+                                      </div>
+                                      <h3 class="text-xs font-sans lg:text-sm">James clear</h3>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+                          </div>
+                      </a>
+                  </div>
+              </div>
+              <div class="card flex-none w-[170px] md:w-[230px] lg:w-[268px]">
+                  <div class="px-1 md:px-3">
+                      <a href="" class="hover:opacity-85 transition duration-200 ease-in-out group" title="How to master your habit">
+                          <div class="shadow-lg rounded-xl overflow-hidden group-hover:bg-gray-200 transition duration-300 ease-in-out">
+                            <div class="h-[13rem] md:h-[19rem] lg:h-[20rem] m-2 lg:m-4 overflow-hidden relative rounded-xl">
+                                <img src="/src/img/book/book2.svg" class="mx-auto absolute inset-0 w-full h-full object-cover group-hover:blur-[3px] group-hover:scale-110 transition duration-300" alt="book1">
+                                <div class="bg-dark w-full h-full absolute opacity-50 -translate-x-[300px] group-hover:translate-x-0 inset-0 transition duration-300"></div>
+                                <div class="absolute inset-0 translate-y-[300px] group-hover:-translate-y-0 transition duration-500">
+                                  <div class="realative">
+                                    <div class="text-white absolute left-2 bottom-2 md:left-3 md:bottom-3 lg:left-3 lg:bottom-4 space-y-1">
+                                      <h1 class="text-base md:text-xl max-w-[12rem]">How to master your habit</h1>
+                                      <div class="m-0 text-xs">
+                                        <ul class="flex space-x-1">
+                                            <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                            <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                            <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                            <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                            <li class="text-secondary grayscale"><i class="fa-solid fa-star fill-current"></i> </li>
+                                        </ul>
+                                      </div>
+                                      <h3 class="text-xs font-sans lg:text-sm">Felix y siaw</h3>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+                          </div>
+                      </a>
+                  </div>
+              </div>
+              <div class="card flex-none w-[170px] md:w-[230px] lg:w-[268px]">
+                  <div class="px-1 md:px-3">
+                      <a href="" class="hover:opacity-85 transition duration-200 ease-in-out group" title="Build a story brand">
+                          <div class="shadow-lg rounded-xl overflow-hidden group-hover:bg-gray-200 transition duration-300 ease-in-out">
+                            <div class="h-[13rem] md:h-[19rem] lg:h-[20rem] m-2 lg:m-4 overflow-hidden relative rounded-xl">
+                                <img src="/src/img/book/book5.svg" class="mx-auto absolute inset-0 w-full h-full object-cover group-hover:blur-[3px] group-hover:scale-110 transition duration-300" alt="book1">
+                                <div class="bg-dark w-full h-full absolute opacity-50 -translate-x-[300px] group-hover:translate-x-0 inset-0 transition duration-300"></div>
+                                <div class="absolute inset-0 translate-y-[300px] group-hover:-translate-y-0 transition duration-500">
+                                  <div class="realative">
+                                    <div class="text-white absolute left-2 bottom-2 md:left-3 md:bottom-3 lg:left-3 lg:bottom-4 space-y-1">
+                                      <h1 class="text-base md:text-xl max-w-[12rem]">Build a story brand</h1>
+                                      <div class="m-0 text-xs">
+                                        <ul class="flex space-x-1">
+                                            <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                            <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                            <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                            <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                            <li class="text-secondary grayscale"><i class="fa-solid fa-star fill-current"></i> </li>
+                                        </ul>
+                                      </div>
+                                      <h3 class="text-xs font-sans lg:text-sm">Donald miller</h3>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+                          </div>
+                      </a>
+                  </div>
+              </div>
+              <div class="card flex-none w-[170px] md:w-[230px] lg:w-[268px]">
+                  <div class="px-1 md:px-3">
+                      <a href="" class="hover:opacity-85 transition duration-200 ease-in-out group" title="Start with why">
+                          <div class="shadow-lg rounded-xl overflow-hidden group-hover:bg-gray-200 transition duration-300 ease-in-out">
+                            <div class="h-[13rem] md:h-[19rem] lg:h-[20rem] m-2 lg:m-4 overflow-hidden relative rounded-xl">
+                                <img src="/src/img/book/book7.svg" class="mx-auto absolute inset-0 w-full h-full object-cover group-hover:blur-[3px] group-hover:scale-110 transition duration-300" alt="book1">
+                                <div class="bg-dark w-full h-full absolute opacity-50 -translate-x-[300px] group-hover:translate-x-0 inset-0 transition duration-300"></div>
+                                <div class="absolute inset-0 translate-y-[300px] group-hover:-translate-y-0 transition duration-500">
+                                  <div class="realative">
+                                    <div class="text-white absolute left-2 bottom-2 md:left-3 md:bottom-3 lg:left-3 lg:bottom-4 space-y-1">
+                                      <h1 class="text-base md:text-xl max-w-[12rem]">Start with why</h1>
+                                      <div class="m-0 text-xs">
+                                        <ul class="flex space-x-1">
+                                            <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                            <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                            <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                            <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                            <li class="text-secondary grayscale"><i class="fa-solid fa-star fill-current"></i> </li>
+                                        </ul>
+                                      </div>
+                                      <h3 class="text-xs font-sans lg:text-sm">Simon sinek</h3>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+                          </div>
+                      </a>
+                  </div>
+              </div>
+              <div class="card flex-none w-[170px] md:w-[230px] lg:w-[268px]">
+                  <div class="px-1 md:px-3">
+                      <a href="" class="hover:opacity-85 transition duration-200 ease-in-out group" title="Bintang">
+                          <div class="shadow-lg rounded-xl overflow-hidden group-hover:bg-gray-200 transition duration-300 ease-in-out">
+                            <div class="h-[13rem] md:h-[19rem] lg:h-[20rem] m-2 lg:m-4 overflow-hidden relative rounded-xl">
+                                <img src="/src/img/book/book8.svg" class="mx-auto absolute inset-0 w-full h-full object-cover group-hover:blur-[3px] group-hover:scale-110 transition duration-300" alt="book1">
+                                <div class="bg-dark w-full h-full absolute opacity-50 -translate-x-[300px] group-hover:translate-x-0 inset-0 transition duration-300"></div>
+                                <div class="absolute inset-0 translate-y-[300px] group-hover:-translate-y-0 transition duration-500">
+                                  <div class="realative">
+                                    <div class="text-white absolute left-2 bottom-2 md:left-3 md:bottom-3 lg:left-3 lg:bottom-4 space-y-1">
+                                      <h1 class="text-base md:text-xl max-w-[12rem]">Bintang</h1>
+                                      <div class="m-0 text-xs">
+                                        <ul class="flex space-x-1">
+                                            <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                            <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                            <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                            <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                            <li class="text-secondary grayscale"><i class="fa-solid fa-star fill-current"></i> </li>
+                                        </ul>
+                                      </div>
+                                      <h3 class="text-xs font-sans lg:text-sm">Tere liye</h3>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+                          </div>
+                      </a>
+                  </div>
+              </div>
+              <div class="card flex-none w-[170px] md:w-[230px] lg:w-[268px]">
+                  <div class="px-1 md:px-3">
+                      <a href="" class="hover:opacity-85 transition duration-200 ease-in-out group" title="Selena">
+                          <div class="shadow-lg rounded-xl overflow-hidden group-hover:bg-gray-200 transition duration-300 ease-in-out">
+                            <div class="h-[13rem] md:h-[19rem] lg:h-[20rem] m-2 lg:m-4 overflow-hidden relative rounded-xl">
+                                <img src="/src/img/book/book1.svg" class="mx-auto absolute inset-0 w-full h-full object-cover group-hover:blur-[3px] group-hover:scale-110 transition duration-300" alt="book1">
+                                <div class="bg-dark w-full h-full absolute opacity-50 -translate-x-[300px] group-hover:translate-x-0 inset-0 transition duration-300"></div>
+                                <div class="absolute inset-0 translate-y-[300px] group-hover:-translate-y-0 transition duration-500">
+                                  <div class="realative">
+                                    <div class="text-white absolute left-2 bottom-2 md:left-3 md:bottom-3 lg:left-3 lg:bottom-4 space-y-1">
+                                      <h1 class="text-base md:text-xl max-w-[12rem]">Selena</h1>
+                                      <div class="m-0 text-xs">
+                                        <ul class="flex space-x-1">
+                                            <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                            <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                            <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                            <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                            <li class="text-secondary grayscale"><i class="fa-solid fa-star fill-current"></i> </li>
+                                        </ul>
+                                      </div>
+                                      <h3 class="text-xs font-sans lg:text-sm">Tere liye</h3>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+                          </div>
+                      </a>
+                  </div>
+              </div>
+              <div class="card flex-none">
+                  <div class="flex w-full h-full px-10">
+                      <div class="my-auto">
+                          <a href="" class="group" title="Lebih banyak">
+                              <div class="w-[50px] h-[50px] border-2 rounded-full bg-white group-hover:bg-slate-400 overflow-hidden transiiton duration-200">
+                                  <div class="flex h-full w-full">
+                                      <div class="mx-auto my-auto">
+                                          <i class="fa-solid fa-arrow-right"></i>
+                                      </div>
+                                  </div>
+                              </div>
+                          </a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@3.2.22/dist/vue.global.min.js"></script>
+  <script>
+    const app = Vue.createApp({
+      data() {
+        return {
+          currentIndex: 0,
+          contents: [
+            {nama: 'Healen Smith', img: '/src/img/profil/Ellipse.svg', komentar: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. At, ipsam facilis esse eos cupiditate nemo?'},
+            {nama: 'Mark Spencer', img: '/src/img/profil/Ellipse (1).svg', komentar: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. At, ipsam facilis esse eos cupiditate nemo?'},
+            {nama: 'Eun jun-hyo', img: '/src/img/profil/Ellipse (2).svg', komentar: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. At, ipsam facilis esse eos cupiditate nemo?'}
+          ],
+        };
+      },
+
+      computed: {
+        currentSlide() {
+          return this.contents[this.currentIndex];
+        },
+      },
+      mounted() {
+        setInterval(() => {
+          this.currentIndex = (this.currentIndex + 1) % this.contents.length;
+        }, 4000); // interval
+      },
+    });
+
+    app.mount('#testi');
+
+    // popular function start
+        document.addEventListener('DOMContentLoaded', function() {
+        const cardWrapper = document.querySelector('.wrapper .wrapping');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+
+        let scrollPosition = 0;
+        const cardWidth = document.querySelector('.card').offsetWidth;
+
+        function nextSlide() {
+          scrollPosition += cardWidth;
+          updateSlider();
+        }
+
+        function prevSlide() {
+          scrollPosition -= cardWidth;
+          updateSlider();
+        }
+
+        function updateSlider() {
+          cardWrapper.scrollTo({
+            left: scrollPosition,
+            behavior: 'smooth'
+          });
+          updateButtonVisibility();
+        }
+
+        function updateButtonVisibility() {
+          if (scrollPosition === 0) {
+            prevBtn.classList.add('hidden');
+          } else {
+            prevBtn.classList.remove('hidden');
+          }
+          if(scrollPosition >= cardWrapper.scrollWidth - cardWrapper.clientWidth){
+            nextBtn.classList.add('hidden');
+          }else{
+            nextBtn.classList.remove('hidden');
+          }
+        }
+
+        nextBtn.addEventListener('click', nextSlide);
+        prevBtn.addEventListener('click', prevSlide);
+
+        // Inisialisasi visibilitas tombol saat halaman dimuat
+        updateButtonVisibility();
+      });
+    // popular function end
+  </script>
+
+</body>
+</html>

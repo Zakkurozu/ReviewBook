@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="icon" href="/src/img/icon.png" type="image/x-icon">
+    <title>ReviewBook</title>
+    <link rel="stylesheet" href="style/output.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+    <!-- header start -->
+    <div id="nav" class="top-0 mb-20 lg:mb-[140px] z-[970]">
+        <header class="top-0 2xl:px-24 absolute w-full z-10">
+            <div class="container">
+                <div class="item flex items-center relative justify-between py-6">
+                    <div class="w-1/4">
+                        <a href="">
+                            <h1 class="font-rubik font-medium text-2xl text-secondary2">Review<span class="text-primary2">Book</span></h1>
+                        </a>
+                    </div>
+                    <div class="w-[40%]">
+                        <form action="" class="mx-auto relative hidden lg:block">
+                            <input class="bg-primary_bg text-secondary2 rounded-lg text-sm px-3 flex justify-between py-3 w-full focus:outline-secondary2" placeholder="Find the book you are looking for" type="text" name="" id="">
+                            <div class="absolute text-slate-400 inset-y-0 right-0 flex items-center pr-3">
+                                <button>
+                                    <i class="fa-solid fa-magnifying-glass fill-current"></i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="w-1/4">
+                        <div class="flex items-center justify-end space-x-4">
+                            <button>
+                                <div class="text-red-600 grayscale hover:grayscale-0 transition duration-200">
+                                    <i class="fa-regular fa-heart fill-current"></i>
+                                </div>
+                            </button>
+                            <button>
+                                <div class="bg-primary2 rounded-full w-[25px] h-[25px] relative hover:bg-opacity-0 hover:border-[1px] hover:border-primary2 transition duration-200 group">
+                                    <div class="absolute translate-x-1/2 top-[1px] right-1/2">
+                                        <h1 class="text-sm text-primary_bg group-hover:text-primary2 transition duration-200">3</h1>
+                                    </div>
+                                </div>
+                            </button>
+                            <button class="hidden md:block">
+                                <h1 class="uppercase">en</h1>
+                            </button>
+                            <div class="border-2 border-transparent active:border-primary2 hover:bg-slate-200 rounded-lg px-1 transition duration-300"> 
+                                <button @click="toogle" class="lg:hidden">
+                                    <div class="ml-auto">
+                                        <span class="ml-auto w-[20px] h-[3px] my-1 block bg-dark"></span>
+                                        <span class="ml-auto w-[25px] h-[3px] my-1 block bg-dark"></span>
+                                        <span class="w-[30px] h-[3px] my-1 block bg-dark"></span>
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item2 hidden lg:block">
+                    <div class="hidden lg:block">
+                        <ul class="flex justify-center items-center space-x-5">
+                            <li class="text-slate-400 border-b-2 border-transparent hover:text-primary2 aktif transition duration-300"><a href="">Home</a></li>
+                            <li class="text-slate-400 border-b-2 border-transparent hover:text-primary2 transition duration-300"><a href="">Bestseller</a></li>
+                            <li class="text-slate-400 border-b-2 border-transparent hover:text-primary2 transition duration-300"><a href="">Category</a></li>
+                            <li class="text-slate-400 border-b-2 border-transparent hover:text-primary2 transition duration-300"><a href="">Community</a></li>
+                            <li class="text-slate-400 border-b-2 border-transparent hover:text-primary2 transition duration-300"><a href="">Blog</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
+            <!-- nav open -->
+            <div class="absolute top-0 h-screen w-screen z-[980] lg:hidden sidebar-fixed" :class="{'sidebar-open': cek, 'sidebar-closed': !cek}" @click="closeSidebar">
+                <div class="absolute bg-dark opacity-35 h-full w-full z-[979]" :class="{'sidebar-open': cek, 'sidebar-closed': !cek}"></div>
+                <div class="absolute backdrop-blur-sm h-full w-full z-[980]" :class="{'sidebar-open': cek, 'sidebar-closed': !cek}"></div>
+                <div class="sidebar bg-white shadow-md rounded-r-lg opacity-100 w-[70%] h-full absolute z-[999] px-5 py-7 transition-transform ease-in-out duration-500" :class="{'sidebar-menu-open': cek, 'sidebar-menu-closed': !cek}">
+                    <div class="head flex justify-between items-center mb-4">
+                        <h1 class=" text-2xl font-semibold font-rubik">Menu</h1>
+                        <button @click="toogle" class=" text-2xl border-2 border-transparent group active:border-primary2 hover:bg-slate-200 rounded-full w-[35px] h-[35px] flex">
+                            <div class="h-full mx-auto">
+                                <i class="fa-solid fa-xmark my-auto"></i>
+                            </div>
+                        </button>
+                    </div>
+                    <div class="space-y-6">
+                        <ul class="">
+                            <li class="group">
+                                <a href="">
+                                    <div class="font-rubik font-medium text-lg group-hover:bg-slate-200 px-4 py-2 rounded-lg border-[3px] border-transparent group-active:border-secondary2 group-active:bg-slate-300 transition duration-200 flex items-center justify-start space-x-2">
+                                        <p><i class="fa-solid fa-house"></i></p>
+                                        <h1>Home</h1>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="group">
+                                <a href="">
+                                    <div class="font-rubik font-medium text-lg group-hover:bg-slate-200 px-4 py-2 rounded-lg border-[3px] border-transparent group-active:border-secondary2 group-active:bg-slate-300 transition duration-200 flex items-center justify-start space-x-2">
+                                        <p><i class="fa-solid fa-book-open"></i></p>
+                                        <h1>Bestseller</h1>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="group">
+                                <a href="">
+                                    <div class="font-rubik font-medium text-lg group-hover:bg-slate-200 px-4 py-2 rounded-lg border-[3px] border-transparent group-active:border-secondary2 group-active:bg-slate-300 transition duration-200 flex items-center justify-start space-x-2">
+                                        <p><i class="fa-solid fa-rectangle-list"></i></p>
+                                        <h1>Category</h1>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="group">
+                                <a href="">
+                                    <div class="font-rubik font-medium text-lg group-hover:bg-slate-200 px-4 py-2 rounded-lg border-[3px] border-transparent group-active:border-secondary2 group-active:bg-slate-300 transition duration-200 flex items-center justify-start space-x-2">
+                                        <p><i class="fa-solid fa-user-group"></i></p>
+                                        <h1>Community</h1>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="group">
+                                <a href="">
+                                    <div class="font-rubik font-medium text-lg group-hover:bg-slate-200 px-4 py-2 rounded-lg border-[3px] border-transparent group-active:border-secondary2 group-active:bg-slate-300 transition duration-200 flex items-center justify-start space-x-2">
+                                        <p class="text-transparent"><i class="fa-solid fa-user-group fill-current"></i></p>
+                                        <h1>Blog</h1>
+                                    </div>
+                                </a>
+                            </li>   
+                        </ul>
+                        <form action="" class="relative">
+                            <input class="bg-primary_bg text-secondary2 rounded-lg text-base truncate px-3 pr-8 py-3 w-full focus:outline-secondary2" placeholder="Search by name...." type="text" name="" id="">
+                            <div class="absolute text-slate-400 inset-y-0 right-0 flex items-center pr-3">
+                                <button>
+                                    <i class="fa-solid fa-magnifying-glass fill-current"></i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <hr class="my-10 border-1">
+                    <div class="">
+                        <div class="flex justify-between w-3/4 mx-auto items-center">
+                            <a href="" class="text-3xl hover:text-blue-800 hover:grayscale-0 grayscale  transition duration-300">
+                                <i class="fa-brands fa-linkedin fill-current"></i>
+                            </a>
+                            <a href="" class="text-3xl hover:text-slate-800 hover:grayscale-0 grayscale  transition duration-300">
+                                <i class="fa-brands fa-github fill-current"></i>
+                            </a>
+                            <a href="" class="text-3xl hover:text-pink-600 hover:grayscale-0 grayscale  transition duration-300">
+                                <i class="fa-brands fa-instagram fill-current"></i>
+                            </a>
+                            <a href="" class="text-3xl hover:text-blue-500 hover:grayscale-0 grayscale  transition duration-300">
+                                <i class="fa-brands fa-facebook fill-current"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="text-center my-3 space-y-5">
+                        <small class="font-medium font-rubik">Copyright &copy; 2024 <strong>ReviewBook</strong></small>
+                        <h1 class="font-rubik text-secondary2 font-medium text-3xl">
+                            <a href="">
+                                Review<span class="text-primary2">Book</span>
+                            </a>
+                        </h1>
+                    </div>
+                </div>
+            </div>
+            <!-- nav open -->
+    </div>
+    <div id="up" class="up hidden lg:block fixed right-5 bottom-5 z-[55] hover:cursor-pointer group transition-transform ease-in-out duration-300">
+        <div class="flex items-center justify-center bg-primary2 w-[45px] h-[45px] rounded-full shadow-lg group-hover:bg-[#a3b74d] group-active:bg-[#8c9c41]">
+            <button id="up-btn" class="inset-0 text-white font-bold text-xl"><i class="fa-solid fa-angle-right -rotate-90 fill-current"></i></button>
+        </div>
+    </div>
+    <!-- header end -->
+
+    <!-- hero start -->
+    <section id="hero" class="hero lg:pb-12 2xl:px-24">
+        <div class="container">
+            <div class="bg-primary rounded-3xl shadow-sm w-full overflow-hidden relative">
+                <div class="flex flex-wrap items-center h-full">
+                    <img src="/src/img/land.svg" class="absolute top-0 left-20 w-[350px]">
+                    <img src="img/ilustration.svg" class="lg:hidden w-[350px] translate-x-1/2 translate-y-1/2 absolute bottom-12 right-20 md:right-44" alt="">
+                    <div class="w-full lg:w-1/2 px-6 py-32 z-10">
+                        <div class="w-full flex">
+                            <div class="mx-auto">
+                                <h1 class="mb-4 text-secondary2 text-3xl md:text-4xl font-semibold">Book is a <br>window of the world</h1>
+                                <h3 class="mb-7 text-base text-dark font-semibold">wake up your dream by reading a book everyday</h3>
+                                <a href="" class="py-3 px-5 bg-primary2 rounded-lg text-primary_bg font-medium hover:bg-secondary transition duration-300 ease-in-out">Read now</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-full hidden lg:block lg:w-1/2">
+                        <img src="img/ilustration.svg" class="mx-auto" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- hero end -->
+
+    <!-- popular start -->
+    <section class="py-8 lg:py-6 2xl:px-24">
+        <div class="container">
+            <div class="flex justify-between items-center">
+                <h1 class="text-2xl lg:text-3xl text-secondary2 font-semibold">Popular Now</h1>
+                <a href="">
+                    <h1 class="text-xl font-normal text-slate-600">View All</h1>
+                </a>
+            </div>
+            <div class="wrapper px-2 relative">
+                <button id="prev-btn" class="group absolute z-50 -translate-y-1/2 top-1/2 -left-3">
+                    <div class="w-[45px] h-[45px] shadow border-2 rounded-full bg-white group-hover:bg-slate-400 overflow-hidden transiiton duration-200">
+                        <div class="flex h-full w-full">
+                            <div class="mx-auto my-auto">
+                                <i class="fa-solid fa-angle-right rotate-180"></i>
+                            </div>
+                        </div>
+                    </div>
+                </button>
+                <button id="next-btn" class="group absolute z-50 -translate-y-1/2 top-1/2 -right-3">
+                    <div class="w-[45px] h-[45px] shadow border-2 rounded-full bg-white group-hover:bg-slate-400 overflow-hidden transiiton duration-200">
+                        <div class="flex h-full w-full">
+                            <div class="mx-auto my-auto">
+                                <i class="fa-solid fa-angle-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                </button>
+                <div class="wrapping flex justify-start mt-6 lg:my-16 gap-y-3 w-full custom-scrollbar overflow-x-auto bg-transparent py-4">
+                    <div class="card flex-none w-[170px] md:w-[230px] lg:w-[268px]">
+                        <div class="px-1 md:px-3">
+                            <a href="" class="hover:opacity-85 transition duration-200 ease-in-out group" title="Atomic habit">
+                                <div class="shadow-lg rounded-xl overflow-hidden group-hover:bg-gray-200 transition duration-300 ease-in-out">
+                                    <div class="h-[13rem] md:h-[19rem] lg:h-[20rem] m-2 lg:m-4 overflow-hidden relative rounded-xl">
+                                        <img src="/src/img/book/book3.svg" class="mx-auto absolute inset-0 w-full h-full object-cover group-hover:blur-[3px] group-hover:scale-110 transition duration-300" alt="book1">
+                                        <div class="bg-dark w-full h-full absolute opacity-50 -translate-x-[300px] group-hover:translate-x-0 inset-0 transition duration-300"></div>
+                                        <div class="absolute inset-0 translate-y-[300px] group-hover:-translate-y-0 transition duration-500">
+                                        <div class="realative">
+                                            <div class="text-white absolute left-2 bottom-2 md:left-3 md:bottom-3 lg:left-3 lg:bottom-4 space-y-1">
+                                            <h1 class="text-base md:text-xl max-w-[12rem]">Atomic habit</h1>
+                                            <div class="m-0 text-xs">
+                                                <ul class="flex space-x-1">
+                                                    <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                                    <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                                    <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                                    <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                                    <li class="text-secondary grayscale"><i class="fa-solid fa-star fill-current"></i> </li>
+                                                </ul>
+                                            </div>
+                                            <h3 class="text-xs font-sans lg:text-sm">James clear</h3>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card flex-none w-[170px] md:w-[230px] lg:w-[268px]">
+                        <div class="px-1 md:px-3">
+                            <a href="" class="hover:opacity-85 transition duration-200 ease-in-out group" title="How to master your habit">
+                                <div class="shadow-lg rounded-xl overflow-hidden group-hover:bg-gray-200 transition duration-300 ease-in-out">
+                                <div class="h-[13rem] md:h-[19rem] lg:h-[20rem] m-2 lg:m-4 overflow-hidden relative rounded-xl">
+                                    <img src="/src/img/book/book2.svg" class="mx-auto absolute inset-0 w-full h-full object-cover group-hover:blur-[3px] group-hover:scale-110 transition duration-300" alt="book1">
+                                    <div class="bg-dark w-full h-full absolute opacity-50 -translate-x-[300px] group-hover:translate-x-0 inset-0 transition duration-300"></div>
+                                    <div class="absolute inset-0 translate-y-[300px] group-hover:-translate-y-0 transition duration-500">
+                                        <div class="realative">
+                                        <div class="text-white absolute left-2 bottom-2 md:left-3 md:bottom-3 lg:left-3 lg:bottom-4 space-y-1">
+                                            <h1 class="text-base md:text-xl max-w-[12rem]">How to master your habit</h1>
+                                            <div class="m-0 text-xs">
+                                            <ul class="flex space-x-1">
+                                                <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                                <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                                <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                                <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                                <li class="text-secondary grayscale"><i class="fa-solid fa-star fill-current"></i> </li>
+                                            </ul>
+                                            </div>
+                                            <h3 class="text-xs font-sans lg:text-sm">Felix y siaw</h3>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card flex-none w-[170px] md:w-[230px] lg:w-[268px]">
+                        <div class="px-1 md:px-3">
+                            <a href="" class="hover:opacity-85 transition duration-200 ease-in-out group" title="Build a story brand">
+                                <div class="shadow-lg rounded-xl overflow-hidden group-hover:bg-gray-200 transition duration-300 ease-in-out">
+                                <div class="h-[13rem] md:h-[19rem] lg:h-[20rem] m-2 lg:m-4 overflow-hidden relative rounded-xl">
+                                    <img src="/src/img/book/book5.svg" class="mx-auto absolute inset-0 w-full h-full object-cover group-hover:blur-[3px] group-hover:scale-110 transition duration-300" alt="book1">
+                                    <div class="bg-dark w-full h-full absolute opacity-50 -translate-x-[300px] group-hover:translate-x-0 inset-0 transition duration-300"></div>
+                                    <div class="absolute inset-0 translate-y-[300px] group-hover:-translate-y-0 transition duration-500">
+                                        <div class="realative">
+                                        <div class="text-white absolute left-2 bottom-2 md:left-3 md:bottom-3 lg:left-3 lg:bottom-4 space-y-1">
+                                            <h1 class="text-base md:text-xl max-w-[12rem]">Build a story brand</h1>
+                                            <div class="m-0 text-xs">
+                                            <ul class="flex space-x-1">
+                                                <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                                <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                                <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                                <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                                <li class="text-secondary grayscale"><i class="fa-solid fa-star fill-current"></i> </li>
+                                            </ul>
+                                            </div>
+                                            <h3 class="text-xs font-sans lg:text-sm">Donald miller</h3>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card flex-none w-[170px] md:w-[230px] lg:w-[268px]">
+                        <div class="px-1 md:px-3">
+                            <a href="" class="hover:opacity-85 transition duration-200 ease-in-out group" title="Start with why">
+                                <div class="shadow-lg rounded-xl overflow-hidden group-hover:bg-gray-200 transition duration-300 ease-in-out">
+                                <div class="h-[13rem] md:h-[19rem] lg:h-[20rem] m-2 lg:m-4 overflow-hidden relative rounded-xl">
+                                    <img src="/src/img/book/book7.svg" class="mx-auto absolute inset-0 w-full h-full object-cover group-hover:blur-[3px] group-hover:scale-110 transition duration-300" alt="book1">
+                                    <div class="bg-dark w-full h-full absolute opacity-50 -translate-x-[300px] group-hover:translate-x-0 inset-0 transition duration-300"></div>
+                                    <div class="absolute inset-0 translate-y-[300px] group-hover:-translate-y-0 transition duration-500">
+                                        <div class="realative">
+                                        <div class="text-white absolute left-2 bottom-2 md:left-3 md:bottom-3 lg:left-3 lg:bottom-4 space-y-1">
+                                            <h1 class="text-base md:text-xl max-w-[12rem]">Start with why</h1>
+                                            <div class="m-0 text-xs">
+                                            <ul class="flex space-x-1">
+                                                <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                                <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                                <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                                <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                                <li class="text-secondary grayscale"><i class="fa-solid fa-star fill-current"></i> </li>
+                                            </ul>
+                                            </div>
+                                            <h3 class="text-xs font-sans lg:text-sm">Simon sinek</h3>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card flex-none w-[170px] md:w-[230px] lg:w-[268px]">
+                        <div class="px-1 md:px-3">
+                            <a href="" class="hover:opacity-85 transition duration-200 ease-in-out group" title="Bintang">
+                                <div class="shadow-lg rounded-xl overflow-hidden group-hover:bg-gray-200 transition duration-300 ease-in-out">
+                                <div class="h-[13rem] md:h-[19rem] lg:h-[20rem] m-2 lg:m-4 overflow-hidden relative rounded-xl">
+                                    <img src="/src/img/book/book8.svg" class="mx-auto absolute inset-0 w-full h-full object-cover group-hover:blur-[3px] group-hover:scale-110 transition duration-300" alt="book1">
+                                    <div class="bg-dark w-full h-full absolute opacity-50 -translate-x-[300px] group-hover:translate-x-0 inset-0 transition duration-300"></div>
+                                    <div class="absolute inset-0 translate-y-[300px] group-hover:-translate-y-0 transition duration-500">
+                                        <div class="realative">
+                                        <div class="text-white absolute left-2 bottom-2 md:left-3 md:bottom-3 lg:left-3 lg:bottom-4 space-y-1">
+                                            <h1 class="text-base md:text-xl max-w-[12rem]">Bintang</h1>
+                                            <div class="m-0 text-xs">
+                                            <ul class="flex space-x-1">
+                                                <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                                <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                                <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                                <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                                <li class="text-secondary grayscale"><i class="fa-solid fa-star fill-current"></i> </li>
+                                            </ul>
+                                            </div>
+                                            <h3 class="text-xs font-sans lg:text-sm">Tere liye</h3>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card flex-none w-[170px] md:w-[230px] lg:w-[268px]">
+                        <div class="px-1 md:px-3">
+                            <a href="" class="hover:opacity-85 transition duration-200 ease-in-out group" title="Selena">
+                                <div class="shadow-lg rounded-xl overflow-hidden group-hover:bg-gray-200 transition duration-300 ease-in-out">
+                                <div class="h-[13rem] md:h-[19rem] lg:h-[20rem] m-2 lg:m-4 overflow-hidden relative rounded-xl">
+                                    <img src="/src/img/book/book1.svg" class="mx-auto absolute inset-0 w-full h-full object-cover group-hover:blur-[3px] group-hover:scale-110 transition duration-300" alt="book1">
+                                    <div class="bg-dark w-full h-full absolute opacity-50 -translate-x-[300px] group-hover:translate-x-0 inset-0 transition duration-300"></div>
+                                    <div class="absolute inset-0 translate-y-[300px] group-hover:-translate-y-0 transition duration-500">
+                                        <div class="realative">
+                                        <div class="text-white absolute left-2 bottom-2 md:left-3 md:bottom-3 lg:left-3 lg:bottom-4 space-y-1">
+                                            <h1 class="text-base md:text-xl max-w-[12rem]">Selena</h1>
+                                            <div class="m-0 text-xs">
+                                            <ul class="flex space-x-1">
+                                                <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                                <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                                <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                                <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                                <li class="text-secondary grayscale"><i class="fa-solid fa-star fill-current"></i> </li>
+                                            </ul>
+                                            </div>
+                                            <h3 class="text-xs font-sans lg:text-sm">Tere liye</h3>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card flex-none">
+                        <div class="flex w-full h-full px-10">
+                            <div class="my-auto">
+                                <a href="" class="group" title="Lebih banyak">
+                                    <div class="w-[50px] h-[50px] border-2 rounded-full bg-white group-hover:bg-slate-400 overflow-hidden transiiton duration-200">
+                                        <div class="flex h-full w-full">
+                                            <div class="mx-auto my-auto">
+                                                <i class="fa-solid fa-arrow-right"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- popular end -->
+
+    <!-- latest start -->
+    <section class="py-8 lg:py-11 2xl:px-24">
+        <div class="container">
+            <div class="flex justify-between items-center">
+                <h1 class="text-2xl lg:text-3xl  text-secondary2 font-semibold">Latest Book</h1>
+            </div>
+            <div class="flex flex-wrap justify-center my-6 lg:my-16 gap-y-3">
+                <div class="w-1/2 md:w-1/3 lg:w-1/4">
+                    <div class="px-1 md:px-3">
+                        <a href="" class="hover:opacity-85 transition duration-200 ease-in-out group" title="Selena">
+                            <div class="shadow-xl rounded-xl overflow-hidden  group-hover:bg-gray-200 transition duration-300 ease-in-out">
+                                <div class="bg-red-50 img h-[15rem] md:h-[20rem] m-2 lg:m-4 overflow-hidden relative rounded-xl">
+                                    <img src="/src/img/book/book1.svg" class="mx-auto absolute inset-0 w-full h-full object-cover group-hover:blur-[1px] group-hover:scale-110 transition duration-300" alt="book1">
+                                </div>
+                                <div class="h-full lg:mx-4 mx-2">
+                                    <div class="md:mb-3">
+                                        <div class="judul m-0">
+                                            <h1 class="mb-0 text-lg md:text-xl text-secondary2 font-semibold truncate" title="Selena">Selena</h1>
+                                            <div class="m-0 text-xs">
+                                                <ul class="flex space-x-1">
+                                                    <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                                    <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                                    <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                                    <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                                    <li class="text-secondary grayscale"><i class="fa-solid fa-star fill-current"></i> </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="penulis">
+                                            <h3 class="font-sans text-sm">Tere Liye</h3>
+                                        </div>
+                                        <div class="reviewer flex space-x-2 items-center font-sans my-2">
+                                            <img src="/src/img/profil/Author avatar.svg" alt="Avatar">
+                                            <p class=" text-secondary2 font-semibold max-w-[80px] truncate text-xs md:text-base">John Doe</p>
+                                            <p class="text-slate-500 hidden md:block"><small>| 5 month ago</small></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="w-1/2 md:w-1/3 lg:w-1/4">
+                    <div class="px-1 md:px-3">
+                        <a href="" class="hover:opacity-85 transition duration-200 ease-in-out group" title="How to master your habit">
+                            <div class="shadow-xl rounded-xl overflow-hidden  group-hover:bg-gray-200 transition duration-300 ease-in-out">
+                                <div class="bg-red-50 img h-[15rem] md:h-[20rem] m-2 lg:m-4 overflow-hidden relative rounded-xl">
+                                    <img src="/src/img/book/book2.svg" class="mx-auto absolute inset-0 w-full h-full object-cover group-hover:blur-[1px] group-hover:scale-110 transition duration-300" alt="book1">
+                                </div>
+                                <div class="h-full lg:mx-4 mx-2">
+                                    <div class="md:mb-3">
+                                        <div class="judul m-0">
+                                            <h1 class="mb-0 text-lg md:text-xl text-secondary2 font-semibold truncate" title="How to master your habit">How to master your habit</h1>
+                                            <div class="m-0 text-xs">
+                                                <ul class="flex space-x-1">
+                                                    <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                                    <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                                    <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                                    <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                                    <li class="text-secondary grayscale"><i class="fa-solid fa-star fill-current"></i> </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="penulis">
+                                            <h3 class="font-sans text-sm">Felix y siaw</h3>
+                                        </div>
+                                        <div class="reviewer flex space-x-2 items-center font-sans my-2">
+                                            <img src="/src/img/profil/Author avatar (1).svg" alt="Avatar">
+                                            <p class=" text-secondary2 font-semibold max-w-[80px] truncate text-xs md:text-base">Adam Wale</p>
+                                            <p class="text-slate-500 hidden md:block"><small>| 5 month ago</small></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="w-1/2 md:w-1/3 lg:w-1/4">
+                    <div class="px-1 md:px-3">
+                        <a href="" class="hover:opacity-85 transition duration-200 ease-in-out group" title="Atomic habits">
+                            <div class="shadow-xl rounded-xl overflow-hidden  group-hover:bg-gray-200 transition duration-300 ease-in-out">
+                                <div class="bg-red-50 img h-[15rem] md:h-[20rem] m-2 lg:m-4 overflow-hidden relative rounded-xl">
+                                    <img src="/src/img/book/book3.svg" class="mx-auto absolute inset-0 w-full h-full object-cover group-hover:blur-[1px] group-hover:scale-110 transition duration-300" alt="book1">
+                                </div>
+                                <div class="h-full lg:mx-4 mx-2">
+                                    <div class="md:mb-3">
+                                        <div class="judul m-0">
+                                            <h1 class="mb-0 text-lg md:text-xl text-secondary2 font-semibold truncate" title="Atomic habits">Atomic habits</h1>
+                                            <div class="m-0 text-xs">
+                                                <ul class="flex space-x-1">
+                                                    <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                                    <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                                    <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                                    <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                                    <li class="text-secondary grayscale"><i class="fa-solid fa-star fill-current"></i> </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="penulis">
+                                            <h3 class="font-sans text-sm">James clear</h3>
+                                        </div>
+                                        <div class="reviewer flex space-x-2 items-center font-sans my-2">
+                                            <img src="/src/img/profil/Author avatar (2).svg" alt="Avatar">
+                                            <p class=" text-secondary2 font-semibold max-w-[80px] truncate text-xs md:text-base">Arthur james</p>
+                                            <p class="text-slate-500 hidden md:block"><small>| 5 month ago</small></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="w-1/2 md:w-1/3 lg:w-1/4">
+                    <div class="px-1 md:px-3">
+                        <a href="" class="hover:opacity-85 transition duration-200 ease-in-out group" title="Chrushing IT">
+                            <div class="shadow-xl rounded-xl overflow-hidden  group-hover:bg-gray-200 transition duration-300 ease-in-out">
+                                <div class="bg-red-50 img h-[15rem] md:h-[20rem] m-2 lg:m-4 overflow-hidden relative rounded-xl">
+                                    <img src="/src/img/book/book4.svg" class="mx-auto absolute inset-0 w-full h-full object-cover group-hover:blur-[1px] group-hover:scale-110 transition duration-300" alt="book1">
+                                </div>
+                                <div class="h-full lg:mx-4 mx-2">
+                                    <div class="md:mb-3">
+                                        <div class="judul m-0">
+                                            <h1 class="mb-0 text-lg md:text-xl text-secondary2 font-semibold truncate" title="Chrushing IT">Chrushing IT</h1>
+                                            <div class="m-0 text-xs">
+                                                <ul class="flex space-x-1">
+                                                    <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                                    <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                                    <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                                    <li class="text-secondary"><i class="fa-solid fa-star fill-current"></i> </li>
+                                                    <li class="text-secondary grayscale"><i class="fa-solid fa-star fill-current"></i> </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="penulis">
+                                            <h3 class="font-sans text-sm">Gary vaynerchuck</h3>
+                                        </div>
+                                        <div class="reviewer flex space-x-2 items-center font-sans my-2">
+                                            <img src="/src/img/profil/Author avatar (3).svg" alt="Avatar">
+                                            <p class=" text-secondary2 font-semibold max-w-[80px] truncate text-xs md:text-base">Paul hidelston</p>
+                                            <p class="text-slate-500 hidden md:block"><small>| 5 month ago</small></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="flex justify-center mt-8 lg:mt-0">
+                <a href="#" class="group text-lg">
+                    <h2 class="text-slate-600 group-hover:text-secondary2 transition duration-300">Discover more</h2>
+                    <hr class="border-2 rounded-sm scale-0 group-hover:border-secondary2 group-hover:scale-100 origin-left transition duration-[400ms]">
+                </a>
+            </div>
+        </div>
+    </section>
+    <!-- latest end -->
+
+    <!-- recomendation start -->
+    <section class="py-11 2xl:px-24">
+        <div class="container">
+            <div class="bg-primary rounded-3xl overflow-hidden relative">
+                <img src="/src/img/land2.svg" class="absolute -top-5 right-0" alt="">
+                <div class="py-36">
+                    <div class="container space-y-10">
+                        <div class="flex">
+                            <h1 class="text-2xl lg:text-4xl text-secondary2 mx-auto text-center max-w-md font-semibold">Recomendation books from you to review</h1>
+                        </div>
+                        <div class="flex space-x-3 items-center justify-center px-3">
+                            <div>
+                                <input type="text" placeholder="Write your recomendation" class="focus:outline-secondary2 text-secondary2 rounded-lg md:py-3 md:px-3 py-2 px-2 w-full lg:w-96">
+                            </div>
+                            <div>
+                                <button type="submit" class="md:px-4 md:py-3 px-3 py-2 rounded-lg hover:bg-secondary transition duration-300 bg-primary2 text-primary_bg">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- recomendation end -->
+
+    <!-- testimonial start -->
+    <section class="py-20 2xl:px-24" id="testi">
+        <div class="container">
+            <div class="flex flex-wrap justify-center">
+                <div class="w-full md:w-2/3 lg:w-1/2 px-5">
+                    <transition name="slide" mode="out-in">
+                      <div class="border-2 py-16 px-4 border-primary2 rounded-lg relative" :key="currentIndex">
+                          <div class="haed">
+                              <img :src="currentSlide.img" class="absolute -top-10 translate-x-1/2 right-1/2" alt="Healen Smith">
+                              <img src="/src/img/land3.svg" class="absolute -top-5 translate-x-1/2 right-1/4" alt="">
+                          </div>
+                          <div class="text-center text-secondary2 space-y-4">
+                              <h2 class="text-lg font-normal">{{currentSlide.nama}}</h2>
+                              <p class="font-sans text-slate-500">{{ currentSlide.komentar }}</p>
+                          </div>
+                      </div>
+                    </transition>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- testimonial end -->
+
+    <!-- footer start -->
+    <section class="py-12 2xl:px-24 bg-primary">
+        <div class="container">
+            <div class="flex justify-between flex-wrap overflow-hidden space-y-6 lg:space-y-0">
+                <div class="space-y-2 w-full lg:w-1/2">
+                    <h1 class="text-2xl font-rubik text-secondary2">Review<span class="text-primary2">Book</span></h1>
+                    <h2 class="text-slate-500">Is the best place to review book</h2>
+                </div>
+                <div class="flex justify-between items-start w-full md:w-1/2 flex-wrap space-y-6 md:space-y-0 ms-auto">
+                    <div class="w-1/2 space-y-4">
+                        <h1 class="text-dark text-2xl font-medium">Navigation</h1>
+                        <ul class="space-y-3">
+                            <li class="text-slate-500 text-base"><a href="" class="hover:text-primary2 transition duration-200">Home</a></li>
+                            <li class="text-slate-500 text-base"><a href="" class="hover:text-primary2 transition duration-200">Bestseller</a></li>
+                            <li class="text-slate-500 text-base"><a href="" class="hover:text-primary2 transition duration-200">Category</a></li>
+                            <li class="text-slate-500 text-base"><a href="" class="hover:text-primary2 transition duration-200">Community</a></li>
+                            <li class="text-slate-500 text-base"><a href="" class="hover:text-primary2 transition duration-200">Blog</a></li>
+                        </ul>
+                    </div>
+                    <div class="w-full md:w-1/2 space-y-4">
+                        <h1 class="text-2xl">Company</h1>
+                        <h3 class="text-base text-slate-500 max-w-xs">afrizalahma5@gmail.com Jl. Pule-tugu, Gugur Pule Trenggalek Jawa Timur</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="bottom-0 bg-primary py-6 2xl:px-20">
+        <div class="container">
+            <div class="flex items-center lg:justify-between">
+                <h1 class="font-sans text-slate-500 mx-auto lg:mx-0">&copy;2024 ReviewBook. All right reserved </h1>
+                <div class="hidden lg:block">
+                    <div class="flex items-center space-x-2">
+                        <a href="" class="group">
+                            <div class="bg-primary2 w-[40px] h-[40px] rounded-full group-hover:bg-opacity-0 group-hover:border-2 group-hover:border-secondary2 transition duration-200">
+                                <div class="flex h-full">
+                                    <h1 class="text-lg text-white mx-auto my-auto group-hover:text-secondary2 transition duration-200"><i class="fa-brands fa-linkedin"></i></h1>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="" class="group">
+                            <div class="bg-primary2 w-[40px] h-[40px] rounded-full group-hover:bg-opacity-0 group-hover:border-2 group-hover:border-slate-600 transition duration-200">
+                                <div class="flex h-full">
+                                    <h1 class="text-lg text-white mx-auto my-auto group-hover:text-slate-600 transition duration-200"><i class="fa-brands fa-github"></i></h1>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="" class="group">
+                            <div class="bg-primary2 w-[40px] h-[40px] rounded-full group-hover:bg-opacity-0 group-hover:border-2 group-hover:border-pink-600 transition duration-200">
+                                <div class="flex h-full">
+                                    <h1 class="text-lg text-white mx-auto my-auto group-hover:text-pink-600 transition duration-200"><i class="fa-brands fa-instagram"></i></h1>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="" class="group">
+                            <div class="bg-primary2 w-[40px] h-[40px] rounded-full group-hover:bg-opacity-0 group-hover:border-2 group-hover:border-blue-600 transition duration-200">
+                                <div class="flex h-full">
+                                    <h1 class="text-lg text-white mx-auto my-auto group-hover:text-blue-600 transition duration-200"><i class="fa-brands fa-facebook-f fill-current"></i></h1>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- footer end -->
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>

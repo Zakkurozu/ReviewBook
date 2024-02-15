@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Document</title>
+    <link rel="stylesheet" href="style/output.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+    <!-- header start -->
+    <div id="nav" class="top-0 mb-20 lg:mb-[144px] z-[970]">
+        <header class="top-0 2xl:px-20 absolute w-full z-10">
+            <div class="container">
+                <div class="item flex items-center relative justify-between py-6">
+                    <div class="w-1/4">
+                        <a href="">
+                            <h1 class="font-rubik font-medium text-2xl text-secondary2">Review<span class="text-primary2">Book</span></h1>
+                        </a>
+                    </div>
+                    <div class="w-[40%]">
+                        <form action="" class="mx-auto relative hidden lg:block">
+                            <input class="bg-primary_bg text-secondary2 rounded-lg text-sm px-3 flex justify-between py-3 w-full focus:outline-secondary2" placeholder="Find the book you are looking for" type="text" name="" id="">
+                            <div class="absolute text-slate-400 inset-y-0 right-0 flex items-center pr-3">
+                                <button>
+                                    <i class="fa-solid fa-magnifying-glass fill-current"></i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="w-1/4">
+                        <div class="flex items-center justify-end space-x-4">
+                            <button>
+                                <div class="text-red-600 grayscale hover:grayscale-0 transition duration-200">
+                                    <i class="fa-regular fa-heart fill-current"></i>
+                                </div>
+                            </button>
+                            <button>
+                                <div class="bg-primary2 rounded-full w-[25px] h-[25px] relative hover:bg-opacity-0 hover:border-[1px] hover:border-primary2 transition duration-200 group">
+                                    <div class="absolute translate-x-1/2 top-[1px] right-1/2">
+                                        <h1 class="text-sm text-primary_bg group-hover:text-primary2 transition duration-200">3</h1>
+                                    </div>
+                                </div>
+                            </button>
+                            <button class="hidden md:block">
+                                <h1 class="uppercase">en</h1>
+                            </button>
+                            <div class="border-2 border-transparent active:border-primary2 hover:bg-slate-200 rounded-lg px-1 transition duration-300"> 
+                                <button @click="toogle" class="lg:hidden">
+                                    <div class="ml-auto">
+                                        <span class="ml-auto w-[20px] h-[3px] my-1 block bg-dark"></span>
+                                        <span class="ml-auto w-[25px] h-[3px] my-1 block bg-dark"></span>
+                                        <span class="w-[30px] h-[3px] my-1 block bg-dark"></span>
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item2 hidden lg:block">
+                    <div class="hidden lg:block">
+                        <ul class="flex justify-center items-center space-x-5">
+                            <li class="text-slate-400 border-b-2 border-transparent hover:text-primary2 aktif transition duration-300"><a href="">Home</a></li>
+                            <li class="text-slate-400 border-b-2 border-transparent hover:text-primary2 transition duration-300"><a href="">Bestseller</a></li>
+                            <li class="text-slate-400 border-b-2 border-transparent hover:text-primary2 transition duration-300"><a href="">Category</a></li>
+                            <li class="text-slate-400 border-b-2 border-transparent hover:text-primary2 transition duration-300"><a href="">Community</a></li>
+                            <li class="text-slate-400 border-b-2 border-transparent hover:text-primary2 transition duration-300"><a href="">Blog</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
+            <!-- nav open -->
+            <div class="absolute top-0 h-screen w-screen z-[980] lg:hidden sidebar-fixed" :class="{'sidebar-open': cek, 'sidebar-closed': !cek}" @click="closeSidebar">
+                <div class="absolute bg-dark opacity-35 h-full w-full z-[979]" :class="{'sidebar-open': cek, 'sidebar-closed': !cek}"></div>
+                <div class="absolute backdrop-blur-sm h-full w-full z-[980]" :class="{'sidebar-open': cek, 'sidebar-closed': !cek}"></div>
+                <div class="sidebar bg-white shadow-md rounded-r-lg opacity-100 w-[70%] h-full absolute z-[999] px-5 py-7 transition-transform ease-in-out duration-500" :class="{'sidebar-menu-open': cek, 'sidebar-menu-closed': !cek}">
+                    <div class="head flex justify-between items-center mb-4">
+                        <h1 class=" text-2xl font-semibold font-rubik">Menu</h1>
+                        <button @click="toogle" class=" text-2xl border-2 border-transparent group active:border-primary2 hover:bg-slate-200 rounded-full w-[35px] h-[35px] flex">
+                            <div class="h-full mx-auto">
+                                <i class="fa-solid fa-xmark my-auto"></i>
+                            </div>
+                        </button>
+                    </div>
+                    <div class="space-y-6">
+                        <ul class="">
+                            <li class="group">
+                                <a href="">
+                                    <div class="font-rubik font-medium text-lg group-hover:bg-slate-200 px-4 py-2 rounded-lg border-[3px] border-transparent group-active:border-secondary2 group-active:bg-slate-300 transition duration-200 flex items-center justify-start space-x-2">
+                                        <p><i class="fa-solid fa-house"></i></p>
+                                        <h1>Home</h1>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="group">
+                                <a href="">
+                                    <div class="font-rubik font-medium text-lg group-hover:bg-slate-200 px-4 py-2 rounded-lg border-[3px] border-transparent group-active:border-secondary2 group-active:bg-slate-300 transition duration-200 flex items-center justify-start space-x-2">
+                                        <p><i class="fa-solid fa-book-open"></i></p>
+                                        <h1>Bestseller</h1>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="group">
+                                <a href="">
+                                    <div class="font-rubik font-medium text-lg group-hover:bg-slate-200 px-4 py-2 rounded-lg border-[3px] border-transparent group-active:border-secondary2 group-active:bg-slate-300 transition duration-200 flex items-center justify-start space-x-2">
+                                        <p><i class="fa-solid fa-rectangle-list"></i></p>
+                                        <h1>Category</h1>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="group">
+                                <a href="">
+                                    <div class="font-rubik font-medium text-lg group-hover:bg-slate-200 px-4 py-2 rounded-lg border-[3px] border-transparent group-active:border-secondary2 group-active:bg-slate-300 transition duration-200 flex items-center justify-start space-x-2">
+                                        <p><i class="fa-solid fa-user-group"></i></p>
+                                        <h1>Community</h1>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="group">
+                                <a href="">
+                                    <div class="font-rubik font-medium text-lg group-hover:bg-slate-200 px-4 py-2 rounded-lg border-[3px] border-transparent group-active:border-secondary2 group-active:bg-slate-300 transition duration-200 flex items-center justify-start space-x-2">
+                                        <p class="text-transparent"><i class="fa-solid fa-user-group fill-current"></i></p>
+                                        <h1>Blog</h1>
+                                    </div>
+                                </a>
+                            </li>   
+                        </ul>
+                        <form action="" class="relative">
+                            <input class="bg-primary_bg text-secondary2 rounded-lg text-base truncate px-3 pr-8 py-3 w-full focus:outline-secondary2" placeholder="Search by name...." type="text" name="" id="">
+                            <div class="absolute text-slate-400 inset-y-0 right-0 flex items-center pr-3">
+                                <button>
+                                    <i class="fa-solid fa-magnifying-glass fill-current"></i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <hr class="my-10 border-1">
+                    <div class="">
+                        <div class="flex justify-between w-3/4 mx-auto items-center">
+                            <a href="" class="text-3xl hover:text-blue-800 hover:grayscale-0 grayscale  transition duration-300">
+                                <i class="fa-brands fa-linkedin fill-current"></i>
+                            </a>
+                            <a href="" class="text-3xl hover:text-slate-800 hover:grayscale-0 grayscale  transition duration-300">
+                                <i class="fa-brands fa-github fill-current"></i>
+                            </a>
+                            <a href="" class="text-3xl hover:text-pink-600 hover:grayscale-0 grayscale  transition duration-300">
+                                <i class="fa-brands fa-instagram fill-current"></i>
+                            </a>
+                            <a href="" class="text-3xl hover:text-blue-500 hover:grayscale-0 grayscale  transition duration-300">
+                                <i class="fa-brands fa-facebook fill-current"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="text-center my-3 space-y-5">
+                        <small class="font-medium font-rubik">Copyright &copy; 2024 <strong>ReviewBook</strong></small>
+                        <h1 class="font-rubik text-secondary2 font-medium text-3xl">
+                            <a href="">
+                                Review<span class="text-primary2">Book</span>
+                            </a>
+                        </h1>
+                    </div>
+                </div>
+            </div>
+            <!-- nav open -->
+    </div>
+    <!-- header end -->
+
+    <section class="h-screen bg-slate-300"></section>
+    <section class="h-screen"></section>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="/src/main.js"></script>
+</body>
+</html>
