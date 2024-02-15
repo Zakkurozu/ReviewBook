@@ -162,9 +162,9 @@ document.addEventListener('DOMContentLoaded', function() {
         return {
             currentIndex: 0,
             contents: [
-            {nama: 'Healen Smith', img: '/src/img/profil/Ellipse.svg', komentar: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. At, ipsam facilis esse eos cupiditate nemo?'},
-            {nama: 'Mark Spencer', img: '/src/img/profil/Ellipse (1).svg', komentar: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. At, ipsam facilis esse eos cupiditate nemo?'},
-            {nama: 'Eun jun-hyo', img: '/src/img/profil/Ellipse (2).svg', komentar: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. At, ipsam facilis esse eos cupiditate nemo?'}
+            {nama: 'Healen Smith', img: '../src/img/profil/Ellipse.svg', komentar: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. At, ipsam facilis esse eos cupiditate nemo?'},
+            {nama: 'Mark Spencer', img: '../src/img/profil/Ellipse (1).svg', komentar: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. At, ipsam facilis esse eos cupiditate nemo?'},
+            {nama: 'Eun jun-hyo', img: '../src/img/profil/Ellipse (2).svg', komentar: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. At, ipsam facilis esse eos cupiditate nemo?'}
             ],
         };
         },
