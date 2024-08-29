@@ -20,9 +20,9 @@ module.exports = {
         '2xl' : '1320px'
       },
       fontFamily:{
-        meri: ["Merriweather", serif],
-        mclaren: ["McLaren", sans-serif],
-        rubik: ["Rubik", sans-serif],
+        meri: ['Merriweather', 'serif'],
+        mclaren: ['McLaren', 'sans-serif'],
+        rubik: ['Rubik', 'sans-serif'],
       }
     },
   },
